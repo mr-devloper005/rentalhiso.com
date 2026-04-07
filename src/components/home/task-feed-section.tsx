@@ -40,9 +40,11 @@ export function TaskFeedSection({
     : []
 
   return (
-    <section className={`py-14 sm:py-16 ${isListing ? 'bg-[linear-gradient(180deg,rgba(223,232,244,0.3),rgba(245,241,233,0))]' : ''}`}>
+    <section className={`border-t border-border py-14 sm:py-16 ${isListing ? 'bg-stone-100/40' : 'bg-background'}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className={`mb-8 grid gap-5 pb-6 md:grid-cols-[1fr_auto] md:items-end ${isListing ? 'border-b border-[rgba(48,90,148,0.14)]' : 'border-b border-[rgba(48,90,148,0.12)]'}`}>
+        <div
+          className={`mb-8 grid gap-5 pb-6 md:grid-cols-[1fr_auto] md:items-end ${isListing ? 'border-b border-primary/15' : 'border-b border-border/90'}`}
+        >
           <div>
             <div className={isListing ? 'rental-label' : 'editorial-label'}>
               {(() => {
@@ -51,16 +53,16 @@ export function TaskFeedSection({
               })()}
               {task.label}
             </div>
-            <h2 className={`mt-4 font-semibold ${isListing ? 'text-4xl text-[#14253d] sm:text-[2.4rem]' : 'text-3xl text-[#17304f] sm:text-[2.15rem]'}`}>
+            <h2 className={`mt-4 font-semibold ${isListing ? 'text-4xl text-foreground sm:text-[2.4rem]' : 'text-3xl text-foreground sm:text-[2.15rem]'}`}>
               {siteContent.taskSectionHeading.replace('{label}', task.label)}
             </h2>
-            <p className="mt-3 max-w-2xl text-sm leading-7 text-[#5b6b80] sm:text-[15px]">
+            <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-[15px]">
               {task.description || siteContent.taskSectionDescriptionSuffix}
             </p>
             {isListing && listingLocations.length ? (
               <div className="mt-4 flex flex-wrap gap-2">
                 {listingLocations.map((location) => (
-                  <span key={location} className="inline-flex items-center gap-2 rounded-full border border-[rgba(48,90,148,0.14)] bg-white/80 px-3 py-1.5 text-xs font-semibold text-[#234268] shadow-sm">
+                  <span key={location} className="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-card/90 px-3 py-1.5 text-xs font-semibold text-primary shadow-sm">
                     <MapPin className="h-3.5 w-3.5" />
                     {location}
                   </span>
@@ -70,7 +72,7 @@ export function TaskFeedSection({
           </div>
           <Link
             href={task.route}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-[#305a94] transition hover:text-[#1f3d65]"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition hover:text-primary/80"
           >
             View all
             <ArrowRight className="h-4 w-4" />

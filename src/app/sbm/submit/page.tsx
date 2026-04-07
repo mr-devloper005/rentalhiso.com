@@ -4,8 +4,7 @@ import { useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Sparkles } from 'lucide-react'
-import { NavbarShell } from '@/components/shared/navbar-shell'
-import { Footer } from '@/components/shared/footer'
+import { ListingSiteShell } from '@/components/listing-site/listing-site-shell'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -110,9 +109,7 @@ export default function SubmitBookmarkPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <NavbarShell />
-
+    <ListingSiteShell>
       <main>
         <section className="border-b border-border bg-secondary/30">
           <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
@@ -237,8 +234,6 @@ export default function SubmitBookmarkPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
-    </div>
+    </ListingSiteShell>
   )
 }

@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Footer } from "@/components/shared/footer";
-import { NavbarShell } from "@/components/shared/navbar-shell";
+import { ListingSiteShell } from "@/components/listing-site/listing-site-shell";
 import { TaskPostCard } from "@/components/shared/task-post-card";
 import { SchemaJsonLd } from "@/components/seo/schema-jsonld";
 import { buildPostMetadata, buildTaskMetadata } from "@/lib/seo";
@@ -95,8 +94,7 @@ export default async function PdfDetailPage({ params }: { params: Promise<{ slug
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <NavbarShell />
+    <ListingSiteShell>
       <main className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-6 sm:px-6 lg:px-8">
         <SchemaJsonLd data={breadcrumbData} />
         <Link
@@ -166,7 +164,6 @@ export default async function PdfDetailPage({ params }: { params: Promise<{ slug
           </section>
         ) : null}
       </main>
-      <Footer />
-    </div>
+    </ListingSiteShell>
   );
 }

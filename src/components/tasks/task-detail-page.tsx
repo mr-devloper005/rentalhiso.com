@@ -2,8 +2,7 @@ import { ContentImage } from "@/components/shared/content-image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MapPin, Globe, Phone, Tag, Mail } from "lucide-react";
-import { NavbarShell } from "@/components/shared/navbar-shell";
-import { Footer } from "@/components/shared/footer";
+import { ListingSiteShell } from "@/components/listing-site/listing-site-shell";
 import { TaskPostCard } from "@/components/shared/task-post-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -119,7 +118,16 @@ const buildMapEmbedUrl = (
   return null;
 };
 
-export async function TaskDetailPage({ task, slug }: { task: TaskKey; slug: string }) {
+export async function TaskDetailPage({
+  task,
+  slug,
+  embed = false,
+}: {
+  task: TaskKey;
+  slug: string;
+  /** When true, omit site chrome (nav/footer) for wrapping in a custom shell. */
+  embed?: boolean;
+}) {
   const taskConfig = getTaskConfig(task);
   let post: SitePost | null = null;
   try {
@@ -217,10 +225,8 @@ export async function TaskDetailPage({ task, slug }: { task: TaskKey; slug: stri
   };
   const schemaPayload = articleSchema ? [articleSchema, breadcrumbSchema] : breadcrumbSchema;
 
-  return (
-    <div className="min-h-screen bg-background">
-      <NavbarShell />
-      <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+  const main = (
+      <main className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ${embed ? "py-6" : "py-10"}`}>
         <SchemaJsonLd data={schemaPayload} />
         <Link
           href={taskConfig?.route || "/"}
@@ -507,7 +513,11 @@ export async function TaskDetailPage({ task, slug }: { task: TaskKey; slug: stri
           </nav>
         </section>
       </main>
-      <Footer />
-    </div>
   );
+
+  if (embed) {
+    return main;
+  }
+
+  return <ListingSiteShell>{main}</ListingSiteShell>;
 }
