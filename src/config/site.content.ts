@@ -3,34 +3,34 @@ import type { TaskKey } from '@/lib/site-config'
 
 export const siteContent = {
   navbar: {
-    tagline: 'Listing-first rental discovery',
+    tagline: 'Rental listings marketplace',
   },
   footer: {
-    tagline: 'Homes, spaces, guides, and local discovery',
+    tagline: 'Browse verified rental listings',
   },
   hero: {
-    badge: 'Curated rental discovery',
-    title: ['Find homes, stays, and spaces', 'through a calmer listing-first experience.'],
+    badge: 'Trusted rental listings',
+    title: ['Professional rental spaces & homes', 'for every search.'],
     description:
-      `${siteIdentity.name} is designed for browsing rental opportunities, serviced stays, local spaces, and property-led listings with stronger location cues, cleaner scanning, and more trustworthy presentation.`,
+      `${siteIdentity.name} is a listing-first marketplace for discovering homes, stays, and spaces — with clear location context, structured categories, and a browsing experience built for quick comparison.`,
     primaryCta: {
-      label: 'Browse listings',
+      label: 'Browse all listings',
       href: '/listings',
     },
     secondaryCta: {
-      label: 'Explore classifieds',
-      href: '/classifieds',
+      label: 'How it works',
+      href: '/about',
     },
-    searchPlaceholder: 'Search homes, spaces, locations, and rental guides',
-    focusLabel: 'Explore',
-    featureCardBadge: 'Featured listings',
-    featureCardTitle: `Location-led listings stay at the center of the ${siteIdentity.name} homepage.`,
+    searchPlaceholder: 'Search listings by location, title, or keyword…',
+    focusLabel: 'Popular',
+    featureCardBadge: 'Featured listing',
+    featureCardTitle: `Curated picks from the ${siteIdentity.name} catalog.`,
     featureCardDescription:
-      'Featured properties, trusted spaces, and useful local context shape the browsing experience without changing the core template logic underneath.',
+      'Preview spaces with strong imagery and location cues — the same card pattern used across the marketplace for consistent scanning.',
     metrics: [
-      { label: 'Primary focus', value: 'Listings first' },
-      { label: 'Discovery style', value: 'Local + category led' },
-      { label: 'Secondary layer', value: 'Profiles and classifieds' },
+      { label: 'Catalog focus', value: 'Listings only' },
+      { label: 'Browse style', value: 'Directory + filters' },
+      { label: 'Built for', value: 'Renters & hosts' },
     ],
   },
   home: {
@@ -44,33 +44,33 @@ export const siteContent = {
       keywords: ['rental listings', 'property discovery', 'homes and spaces', 'business directory'],
     },
     introBadge: `Why ${siteIdentity.name}`,
-    introTitle: 'A listing-first platform designed for better rental and property discovery.',
+    introTitle: 'A clean marketplace for rental listings.',
     introParagraphs: [
-      `${siteIdentity.name} starts with listings instead of treating them like one content type among many. The homepage, navigation, and discovery rhythm all guide visitors toward homes, spaces, and location-led opportunities first.`,
-      'Supporting content still matters, but it works as a trust-building layer around the main browsing experience. That keeps the platform useful for decision-making without losing focus on business and property discovery.',
-      'The result is a cleaner experience for comparing places, exploring categories, understanding local context, and moving into deeper detail when a listing stands out.',
+      `${siteIdentity.name} is organized like a modern listing marketplace: search and browse are front and center, cards are easy to scan, and every page reinforces discovery over clutter.`,
+      'Filters and categories help you narrow results; listing detail pages keep the important facts readable. The interface stays minimal so listings remain the hero.',
+      'Whether you are comparing neighborhoods or opening a single property, the layout is tuned for fast scanning and confident next steps.',
     ],
-    sideBadge: 'Platform highlights',
+    sideBadge: 'Why browse here',
     sidePoints: [
-      'Listing-first homepage with stronger location and category emphasis.',
-      'Cleaner card hierarchy for price, place, and trust signals.',
-      'Classifieds, profiles, and visuals support the listing journey without competing with listings.',
-      'Faster scanning patterns for visitors who want to compare options quickly.',
+      'Listing-only browsing — no mixed content types in the main experience.',
+      'Marketplace-style cards with imagery, title, and location cues.',
+      'Search tuned for rental discovery across the catalog.',
+      'Responsive grid that scales from phone to desktop.',
     ],
     primaryLink: {
       label: 'Explore listings',
       href: '/listings',
     },
     secondaryLink: {
-      label: 'Browse profiles',
-      href: '/profile',
+      label: 'Contact',
+      href: '/contact',
     },
   },
   cta: {
-    badge: 'Start discovering',
-    title: 'Browse trusted rental listings, then move into supporting content only when you need it.',
+    badge: 'Ready to browse?',
+    title: 'Search the listing catalog and open any property in a few clicks.',
     description:
-      `${siteIdentity.name} keeps listings at the center while still connecting visitors to profiles, visuals, local resources, and supporting pages that help them decide with more confidence.`,
+      `${siteIdentity.name} keeps the experience focused: find a listing, compare options, and reach out when you are ready — without wading through unrelated content types in the main UI.`,
     primaryCta: {
       label: 'View listings',
       href: '/listings',
@@ -127,9 +127,8 @@ export const taskIntroCopy: Record<
       'Use categories to narrow down results, compare places faster, and move from broad browsing into more focused property decisions.',
     ],
     links: [
-      { label: 'Explore classifieds', href: '/classifieds' },
-      { label: 'View profiles', href: '/profile' },
-      { label: 'Open visuals', href: '/image-sharing' },
+      { label: 'Search listings', href: '/search' },
+      { label: 'Contact', href: '/contact' },
     ],
   },
   article: {

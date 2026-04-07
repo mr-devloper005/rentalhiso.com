@@ -4,10 +4,10 @@ import { useMemo, useState } from 'react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Search, Menu, X, User, FileText, Building2, LayoutGrid, Tag, Image as ImageIcon, MapPin, House } from 'lucide-react'
+import { Search, Menu, X, LayoutGrid } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/lib/auth-context'
-import { SITE_CONFIG, type TaskKey } from '@/lib/site-config'
+import { SITE_CONFIG } from '@/lib/site-config'
 import { cn } from '@/lib/utils'
 import { siteContent } from '@/config/site.content'
 
@@ -16,167 +16,164 @@ const NavbarAuthControls = dynamic(() => import('@/components/shared/navbar-auth
   loading: () => null,
 })
 
-const taskIcons: Record<TaskKey, any> = {
-  article: FileText,
-  listing: Building2,
-  sbm: LayoutGrid,
-  classified: Tag,
-  image: ImageIcon,
-  profile: User,
-  social: LayoutGrid,
-  pdf: FileText,
-  org: Building2,
-  comment: FileText,
-}
+/** Listing-only marketplace nav: Browse + Search + About (static links). */
+const secondaryNav = [
+  { name: 'Browse listings', href: '/listings', match: '/listings' },
+  { name: 'Search', href: '/search', match: '/search' },
+  { name: 'About', href: '/about', match: '/about' },
+]
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
   const { isAuthenticated } = useAuth()
 
-  const navigation = useMemo(() => SITE_CONFIG.tasks.filter((task) => task.enabled && task.key !== 'profile'), [])
-  const primaryNavigation = navigation.slice(0, 5)
-  const mobileNavigation = navigation.map((task) => ({
-    name: task.label,
-    href: task.route,
-    icon: taskIcons[task.key] || LayoutGrid,
-  }))
-
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[rgba(40,67,104,0.12)] bg-[rgba(250,247,242,0.88)] backdrop-blur-xl">
-      <div className="border-b border-[rgba(40,67,104,0.08)] bg-[rgba(219,233,255,0.42)]">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#526277] sm:px-6 lg:px-8">
-          <span className="inline-flex items-center gap-2">
-            <MapPin className="h-3.5 w-3.5 text-[#305a94]" />
-            {SITE_CONFIG.name} listing-first discovery
-          </span>
-          <span className="hidden md:inline-flex items-center gap-2">
-            <House className="h-3.5 w-3.5 text-[#f0b347]" />
-            Homes, spaces, and local context
-          </span>
+    <header className="sticky top-0 z-50 w-full shadow-md">
+      <div className="h-1 bg-primary" aria-hidden />
+
+      <div className="bg-[var(--market-topbar)] text-[13px] text-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2.5 sm:px-6 lg:px-8">
+          <Link href="/" className="flex min-w-0 items-center gap-2 font-semibold tracking-tight">
+            <span className="truncate">{SITE_CONFIG.name}</span>
+            <span className="hidden text-white/50 sm:inline">Market</span>
+          </Link>
+          <div className="flex flex-wrap items-center justify-end gap-x-4 gap-y-1 text-white/90">
+            <Link href="/create/listing" className="hover:text-white">
+              List your space
+            </Link>
+            <Link href="/search" className="hidden hover:text-white sm:inline">
+              Search
+            </Link>
+            {!isAuthenticated ? (
+              <>
+                <Link href="/login" className="hover:text-white">
+                  Sign In
+                </Link>
+                <Button size="sm" asChild className="h-8 rounded border-0 bg-primary px-4 text-xs font-semibold text-primary-foreground hover:bg-primary/90">
+                  <Link href="/register">Get started</Link>
+                </Button>
+              </>
+            ) : null}
+          </div>
         </div>
       </div>
 
-      <nav className="mx-auto flex min-h-[5.5rem] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <div className="flex min-w-0 flex-1 items-center gap-4 lg:gap-8">
-          <Link href="/" className="flex shrink-0 items-center gap-3 whitespace-nowrap pr-2">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-[1.35rem] border border-[rgba(40,67,104,0.14)] bg-white p-1.5 shadow-sm">
-              <img
-                src="/favicon.png?v=20260404"
-                alt={`${SITE_CONFIG.name} logo`}
-                width="48"
-                height="48"
-                className="h-full w-full object-contain"
-              />
-            </div>
-            <div className="min-w-0 hidden sm:block">
-              <span className="block truncate text-xl font-semibold text-[#14253d]">{SITE_CONFIG.name}</span>
-              <span className="hidden text-[10px] uppercase tracking-[0.28em] text-[#7a889a] sm:block">
-                {siteContent.navbar.tagline}
-              </span>
-            </div>
-          </Link>
+      <div className="border-b border-white/10 bg-[var(--market-header)] text-white">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-0 sm:px-6 lg:px-8">
+          <div className="flex min-w-0 flex-1 items-center gap-3 py-3">
+            <Link href="/" className="flex shrink-0 items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-md border border-white/15 bg-white p-1">
+                <img
+                  src="/favicon.png?v=20260404"
+                  alt={`${SITE_CONFIG.name} logo`}
+                  width="40"
+                  height="40"
+                  className="h-full w-full object-contain"
+                />
+              </div>
+              <div className="min-w-0 hidden sm:block">
+                <span className="block truncate text-lg font-bold tracking-tight">{SITE_CONFIG.name}</span>
+                <span className="block truncate text-[11px] font-medium uppercase tracking-wider text-white/55">
+                  {siteContent.navbar.tagline}
+                </span>
+              </div>
+            </Link>
 
-          <div className="hidden min-w-0 flex-1 items-center gap-2 overflow-hidden xl:flex">
-            {primaryNavigation.map((task) => {
-              const Icon = taskIcons[task.key] || LayoutGrid
-              const isActive = pathname.startsWith(task.route)
-              return (
-                <Link
-                  key={task.key}
-                  href={task.route}
-                  className={cn(
-                    'flex items-center gap-2 rounded-full px-3.5 py-2.5 text-sm font-semibold whitespace-nowrap transition-colors',
-                    isActive
-                      ? 'bg-[rgba(48,90,148,0.1)] text-[#234268]'
-                      : 'text-[#5e6f82] hover:bg-[rgba(48,90,148,0.06)] hover:text-[#234268]'
-                  )}
-                >
-                  <Icon className="h-4 w-4" />
-                  <span>{task.label}</span>
-                </Link>
-              )
-            })}
+            <nav className="ml-2 hidden min-w-0 flex-1 items-center gap-0 lg:flex">
+              {secondaryNav.map((item) => {
+                const isActive =
+                  item.match === '/about'
+                    ? pathname === '/about' || pathname.startsWith('/about/')
+                    : pathname.startsWith(item.match)
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={cn(
+                      'border-b-[3px] px-4 py-4 text-sm font-semibold transition-colors',
+                      isActive ? 'border-primary text-white' : 'border-transparent text-white/75 hover:text-white'
+                    )}
+                  >
+                    {item.name}
+                  </Link>
+                )
+              })}
+            </nav>
+          </div>
+
+          <div className="flex shrink-0 items-center gap-1 sm:gap-2">
+            <Button variant="ghost" size="icon" asChild className="text-white hover:bg-white/10 lg:hidden">
+              <Link href="/search">
+                <Search className="h-5 w-5" />
+                <span className="sr-only">Search</span>
+              </Link>
+            </Button>
+
+            {isAuthenticated ? (
+              <NavbarAuthControls />
+            ) : (
+              <div className="hidden items-center gap-2 md:flex">
+                <Button variant="ghost" size="sm" asChild className="text-white hover:bg-white/10">
+                  <Link href="/login">Sign In</Link>
+                </Button>
+                <Button size="sm" asChild className="h-9 rounded bg-primary px-4 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
+                  <Link href="/register">Get started</Link>
+                </Button>
+              </div>
+            )}
+
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-white hover:bg-white/10 lg:hidden"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              <span className="sr-only">Toggle menu</span>
+            </Button>
           </div>
         </div>
-
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-          <Button
-            variant="ghost"
-            size="icon"
-            asChild
-            className="hidden rounded-full text-[#5e6f82] hover:bg-[rgba(48,90,148,0.06)] hover:text-[#234268] md:flex"
-          >
-            <Link href="/search">
-              <Search className="h-5 w-5" />
-              <span className="sr-only">Search</span>
-            </Link>
-          </Button>
-
-          {isAuthenticated ? (
-            <NavbarAuthControls />
-          ) : (
-            <div className="hidden items-center gap-2 md:flex">
-              <Button variant="ghost" size="sm" asChild className="rounded-full px-4 text-[#5e6f82] hover:bg-[rgba(48,90,148,0.06)] hover:text-[#234268]">
-                <Link href="/login">Sign In</Link>
-              </Button>
-              <Button size="sm" asChild className="rounded-full bg-[#305a94] px-5 text-white hover:bg-[#264775]">
-                <Link href="/register">Get Started</Link>
-              </Button>
-            </div>
-          )}
-
-          <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-full text-[#5e6f82] hover:bg-[rgba(48,90,148,0.06)] hover:text-[#234268] lg:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            <span className="sr-only">Toggle menu</span>
-          </Button>
-        </div>
-      </nav>
+      </div>
 
       {isMobileMenuOpen && (
-        <div className="border-t border-[rgba(40,67,104,0.12)] bg-[rgba(250,247,242,0.98)] lg:hidden">
-          <div className="space-y-2 px-4 py-4">
+        <div className="border-t border-white/10 bg-[var(--market-header)] lg:hidden">
+          <div className="space-y-1 px-4 py-3">
             <Link
               href="/search"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="mb-3 flex items-center gap-3 rounded-2xl border border-[rgba(40,67,104,0.08)] bg-white px-4 py-3 text-sm font-semibold text-[#5e6f82]"
+              className="flex items-center gap-3 rounded-md bg-white/5 px-3 py-3 text-sm font-semibold text-white"
             >
               <Search className="h-4 w-4" />
-              Search listings and guides
+              Search listings
             </Link>
-
-            {mobileNavigation.map((item) => {
-              const isActive = pathname.startsWith(item.href)
+            {secondaryNav.map((item) => {
+              const isActive =
+                item.match === '/about'
+                  ? pathname === '/about' || pathname.startsWith('/about/')
+                  : pathname.startsWith(item.match)
               return (
                 <Link
-                  key={item.name}
+                  key={item.href}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
-                    'flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-semibold transition-colors',
-                    isActive
-                      ? 'bg-[rgba(48,90,148,0.08)] text-[#234268]'
-                      : 'text-[#5e6f82] hover:bg-[rgba(48,90,148,0.05)] hover:text-[#234268]'
+                    'flex items-center gap-3 rounded-md px-3 py-3 text-sm font-semibold',
+                    isActive ? 'bg-white/10 text-white' : 'text-white/80 hover:bg-white/5'
                   )}
                 >
-                  <item.icon className="h-5 w-5" />
+                  <LayoutGrid className="h-5 w-5" />
                   {item.name}
                 </Link>
               )
             })}
-
             {!isAuthenticated ? (
               <div className="grid gap-2 pt-3 sm:grid-cols-2">
-                <Button variant="outline" asChild className="rounded-full border-[rgba(40,67,104,0.12)] bg-white">
+                <Button variant="outline" asChild className="border-white/25 bg-transparent text-white hover:bg-white/10">
                   <Link href="/login">Sign In</Link>
                 </Button>
-                <Button asChild className="rounded-full bg-[#305a94] text-white hover:bg-[#264775]">
-                  <Link href="/register">Get Started</Link>
+                <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+                  <Link href="/register">Get started</Link>
                 </Button>
               </div>
             ) : null}

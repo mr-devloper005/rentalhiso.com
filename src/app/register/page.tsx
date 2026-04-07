@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useAuth } from "@/lib/auth-context"
+import { ListingSiteShell } from "@/components/listing-site/listing-site-shell"
 
 export default function RegisterPage() {
   const router = useRouter()
@@ -34,13 +35,13 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="mx-auto flex min-h-screen max-w-md items-center px-6">
+    <ListingSiteShell>
+      <div className="mx-auto flex min-h-[60vh] max-w-md flex-1 items-center px-6 py-16">
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="w-full rounded-2xl border border-border bg-card p-8 shadow-sm"
+          className="atlas-panel w-full rounded-lg p-8"
         >
           <div className="mb-6">
             <Link href="/" className="text-lg font-semibold text-foreground">
@@ -122,6 +123,6 @@ export default function RegisterPage() {
           </p>
         </motion.div>
       </div>
-    </div>
+    </ListingSiteShell>
   )
 }
