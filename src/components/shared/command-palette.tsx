@@ -1,24 +1,18 @@
 ﻿'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from '@/components/ui/command'
 import { useToast } from '@/components/ui/use-toast'
-import { FileText, Plus, Tag, Bookmark, Settings, Search } from 'lucide-react'
+import { Plus, Settings, Search, Building2 } from 'lucide-react'
 
 const quickLinks = [
-  { label: 'Go to Social Bookmarks', href: '/sbm', icon: Bookmark },
-  { label: 'Go to Local Guides', href: '/articles', icon: FileText },
-  { label: 'Go to Listings', href: '/listings', icon: Tag },
-  { label: 'Go to Settings', href: '/settings', icon: Settings },
+  { label: 'Browse listings', href: '/listings', icon: Building2 },
+  { label: 'Search listings', href: '/search', icon: Search },
+  { label: 'Settings', href: '/settings', icon: Settings },
 ]
 
-const createActions = [
-  { label: 'Create Local Guide', href: '/create/article', icon: Plus },
-  { label: 'Create Listing', href: '/create/listing', icon: Plus },
-  { label: 'Create Classified', href: '/create/classified', icon: Plus },
-  { label: 'Submit Bookmark', href: '/create/sbm', icon: Plus },
-]
+const createActions = [{ label: 'Create listing', href: '/create/listing', icon: Plus }]
 
 export function CommandPalette() {
   const router = useRouter()
@@ -35,8 +29,6 @@ export function CommandPalette() {
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
   }, [])
-
-  const allItems = useMemo(() => [...quickLinks, ...createActions], [])
 
   return (
     <CommandDialog open={open} onOpenChange={setOpen} title="Command Palette" description="Search for a command to run...">
@@ -76,13 +68,13 @@ export function CommandPalette() {
         <CommandGroup heading="Quick">
           <CommandItem
             onSelect={() => {
-              toast({ title: 'Search opened', description: 'Use the hero search or /search page.' })
+              toast({ title: 'Search', description: 'Opening search.' })
               router.push('/search')
               setOpen(false)
             }}
           >
             <Search className="mr-2 h-4 w-4" />
-            Open Search
+            Open search
           </CommandItem>
         </CommandGroup>
       </CommandList>

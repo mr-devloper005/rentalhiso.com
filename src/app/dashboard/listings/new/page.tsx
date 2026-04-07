@@ -28,7 +28,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { NavbarShell } from "@/components/shared/navbar-shell"
+import { ListingSiteShell } from "@/components/listing-site/listing-site-shell"
 import { useAuth } from "@/lib/auth-context"
 import { useToast } from "@/components/ui/use-toast"
 import { loadFromStorage, saveToStorage, storageKeys } from "@/lib/local-storage"
@@ -202,10 +202,8 @@ export default function NewListingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <NavbarShell />
-
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <ListingSiteShell>
+      <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
@@ -526,6 +524,6 @@ export default function NewListingPage() {
           </div>
         </div>
       </div>
-    </div>
+    </ListingSiteShell>
   )
 }

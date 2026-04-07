@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Footer } from "@/components/shared/footer";
-import { NavbarShell } from "@/components/shared/navbar-shell";
+import { ListingSiteShell } from "@/components/listing-site/listing-site-shell";
 import { ContentImage } from "@/components/shared/content-image";
 import { TaskPostCard } from "@/components/shared/task-post-card";
 import { Button } from "@/components/ui/button";
@@ -107,8 +106,7 @@ export default async function ProfileDetailPage({ params }: { params: Promise<{ 
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <NavbarShell />
+    <ListingSiteShell>
       <main className="mx-auto w-full max-w-6xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
         <SchemaJsonLd data={breadcrumbData} />
         <section className="rounded-3xl border border-border/60 bg-white/90 p-8 shadow-sm md:p-12">
@@ -187,7 +185,6 @@ export default async function ProfileDetailPage({ params }: { params: Promise<{ 
           </section>
         ) : null}
       </main>
-      <Footer />
-    </div>
+    </ListingSiteShell>
   );
 }

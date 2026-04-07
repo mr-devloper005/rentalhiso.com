@@ -3,76 +3,75 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Harbor Atlas — listing marketplace: warm paper, ink, amber accent */
 :root {
-  --background: oklch(0.985 0.004 95);
-  --foreground: oklch(0.24 0.03 250);
-  --card: oklch(0.995 0.003 95 / 0.97);
-  --card-foreground: oklch(0.24 0.03 250);
-  --popover: oklch(0.995 0.003 95 / 0.98);
-  --popover-foreground: oklch(0.24 0.03 250);
-  --primary: oklch(0.46 0.1 252);
-  --primary-foreground: oklch(0.99 0.004 95);
-  --secondary: oklch(0.96 0.012 90);
-  --secondary-foreground: oklch(0.26 0.03 248);
-  --muted: oklch(0.97 0.008 92);
-  --muted-foreground: oklch(0.53 0.03 248);
-  --accent: oklch(0.82 0.09 82);
-  --accent-foreground: oklch(0.2 0.03 248);
-  --destructive: oklch(0.6 0.2 25);
-  --destructive-foreground: oklch(0.98 0.005 84);
-  --border: oklch(0.9 0.012 240);
-  --input: oklch(0.985 0.005 95);
-  --ring: oklch(0.46 0.1 252);
-  --chart-1: oklch(0.46 0.1 252);
-  --chart-2: oklch(0.58 0.08 230);
-  --chart-3: oklch(0.82 0.09 82);
-  --chart-4: oklch(0.87 0.03 100);
-  --chart-5: oklch(0.63 0.07 220);
-  --radius: 1.3rem;
-  --sidebar: oklch(0.99 0.005 84);
-  --sidebar-foreground: oklch(0.23 0.03 20);
-  --sidebar-primary: oklch(0.41 0.15 10);
-  --sidebar-primary-foreground: oklch(0.99 0.005 84);
-  --sidebar-accent: oklch(0.95 0.02 85);
-  --sidebar-accent-foreground: oklch(0.23 0.03 20);
-  --sidebar-border: oklch(0.88 0.02 70);
-  --sidebar-ring: oklch(0.41 0.15 10);
-  --success: oklch(0.76 0.1 155);
-  --warning: oklch(0.88 0.12 92);
-  --info: oklch(0.68 0.08 190);
+  --background: #faf8f5;
+  --foreground: #1c1917;
+  --card: #ffffff;
+  --card-foreground: #1c1917;
+  --popover: #ffffff;
+  --popover-foreground: #1c1917;
+  --primary: #d97706;
+  --primary-foreground: #fffbeb;
+  --secondary: #f5f5f4;
+  --secondary-foreground: #292524;
+  --muted: #f5f5f4;
+  --muted-foreground: #78716c;
+  --accent: #fef3c7;
+  --accent-foreground: #78350f;
+  --destructive: #b91c1c;
+  --destructive-foreground: #fef2f2;
+  --border: #e7e5e4;
+  --input: #ffffff;
+  --ring: #d97706;
+  --chart-1: #d97706;
+  --chart-2: #0d9488;
+  --chart-3: #57534e;
+  --chart-4: #a8a29e;
+  --chart-5: #44403c;
+  --radius: 0.375rem;
+  --sidebar: #fafaf9;
+  --sidebar-foreground: #1c1917;
+  --sidebar-primary: #d97706;
+  --sidebar-primary-foreground: #fffbeb;
+  --sidebar-accent: #f5f5f4;
+  --sidebar-accent-foreground: #1c1917;
+  --sidebar-border: #e7e5e4;
+  --sidebar-ring: #d97706;
+  --atlas-ink: #0c0a09;
+  --atlas-line: #d6d3d1;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Legacy --market-* tokens: shared/navbar.tsx + some home styles */
+  --market-topbar: #171717;
+  --market-header: #262626;
 }
 
 .dark {
-  --background: oklch(0.16 0.03 8);
-  --foreground: oklch(0.96 0.008 84);
-  --card: oklch(0.22 0.03 10 / 0.92);
-  --card-foreground: oklch(0.96 0.008 84);
-  --popover: oklch(0.2 0.03 10 / 0.96);
-  --popover-foreground: oklch(0.96 0.008 84);
-  --primary: oklch(0.7 0.16 14);
-  --primary-foreground: oklch(0.16 0.03 8);
-  --secondary: oklch(0.26 0.03 15 / 0.9);
-  --secondary-foreground: oklch(0.96 0.008 84);
-  --muted: oklch(0.24 0.03 12 / 0.88);
-  --muted-foreground: oklch(0.78 0.02 76);
-  --accent: oklch(0.76 0.1 155);
-  --accent-foreground: oklch(0.16 0.03 8);
-  --border: oklch(0.33 0.04 14 / 0.7);
-  --input: oklch(0.22 0.03 10 / 0.95);
-  --ring: oklch(0.7 0.16 14);
-  --sidebar: oklch(0.18 0.03 10 / 0.95);
-  --sidebar-foreground: oklch(0.96 0.008 84);
-  --sidebar-primary: oklch(0.7 0.16 14);
-  --sidebar-primary-foreground: oklch(0.16 0.03 8);
-  --sidebar-accent: oklch(0.26 0.03 15 / 0.9);
-  --sidebar-accent-foreground: oklch(0.96 0.008 84);
-  --sidebar-border: oklch(0.33 0.04 14 / 0.7);
-  --sidebar-ring: oklch(0.7 0.16 14);
+  --background: #1c1917;
+  --foreground: #fafaf9;
+  --card: #292524;
+  --card-foreground: #fafaf9;
+  --popover: #292524;
+  --popover-foreground: #fafaf9;
+  --primary: #fbbf24;
+  --primary-foreground: #1c1917;
+  --secondary: #44403c;
+  --secondary-foreground: #fafaf9;
+  --muted: #44403c;
+  --muted-foreground: #a8a29e;
+  --accent: #78350f;
+  --accent-foreground: #fef3c7;
+  --destructive: #ef4444;
+  --destructive-foreground: #fef2f2;
+  --border: #57534e;
+  --input: #44403c;
+  --ring: #fbbf24;
+  --market-topbar: #0c0a09;
+  --market-header: #1c1917;
 }
 
 @theme inline {
-  --font-sans: var(--font-manrope), system-ui, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -98,10 +97,10 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -110,9 +109,7 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --color-success: var(--success);
-  --color-warning: var(--warning);
-  --color-info: var(--info);
+  --color-atlas-ink: var(--atlas-ink);
 }
 
 @layer base {
@@ -125,154 +122,39 @@
   }
 
   body {
-    @apply bg-background text-foreground;
-    min-height: 100vh;
-    background-image:
-      radial-gradient(circle at top left, rgba(48, 90, 148, 0.12), transparent 30%),
-      radial-gradient(circle at top right, rgba(240, 179, 71, 0.1), transparent 24%),
-      linear-gradient(180deg, rgba(250, 247, 242, 0.98) 0%, rgba(246, 242, 236, 0.99) 38%, rgba(243, 239, 232, 1) 100%);
-    background-attachment: fixed;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.26) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.22) 1px, transparent 1px);
-    background-size: 120px 120px;
-    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 70%);
+    @apply bg-background text-foreground antialiased;
   }
 
   h1,
   h2,
-  h3,
-  h4 {
+  h3 {
     font-family: var(--font-display);
     letter-spacing: -0.03em;
+    font-weight: 600;
+    color: var(--atlas-ink);
   }
 
-  p,
-  li,
-  input,
-  button,
-  textarea {
-    font-family: var(--font-sans);
-  }
-
-  ::selection {
-    background: rgba(174, 36, 72, 0.18);
-    color: inherit;
+  .dark h1,
+  .dark h2,
+  .dark h3 {
+    color: var(--foreground);
   }
 }
 
 @layer components {
-  .paper-panel {
-    background: linear-gradient(180deg, rgba(255, 252, 247, 0.95), rgba(255, 248, 240, 0.88));
-    border: 1px solid rgba(110, 26, 55, 0.12);
-    box-shadow: 0 20px 60px rgba(80, 28, 36, 0.08);
+  .atlas-panel {
+    @apply rounded-lg border border-border bg-card shadow-sm;
+    box-shadow: 0 1px 2px rgba(28, 25, 23, 0.04), 0 12px 32px rgba(28, 25, 23, 0.06);
   }
 
-  .rental-panel {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(246, 242, 236, 0.92));
-    border: 1px solid rgba(40, 67, 104, 0.12);
-    box-shadow: 0 20px 65px rgba(21, 37, 61, 0.09);
+  .atlas-section-title {
+    @apply relative pl-4;
+    border-left: 4px solid var(--primary);
   }
 
-  .editorial-label {
-    @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em];
-    background: rgba(110, 26, 55, 0.08);
-    color: rgb(110, 26, 55);
-    border: 1px solid rgba(110, 26, 55, 0.12);
+  .listing-atlas .motion-surface {
+    transition:
+      transform 280ms var(--ease-out),
+      box-shadow 280ms var(--ease-out);
   }
-
-  .rental-label {
-    @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em];
-    background: rgba(48, 90, 148, 0.08);
-    color: rgb(35, 66, 104);
-    border: 1px solid rgba(48, 90, 148, 0.12);
-  }
-
-  .editorial-divider {
-    position: relative;
-  }
-
-  .editorial-divider::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -1px;
-    width: 132px;
-    height: 2px;
-    background: linear-gradient(90deg, rgb(174, 36, 72), rgba(114, 186, 169, 0.55));
-  }
-
-  .rental-divider {
-    position: relative;
-  }
-
-  .rental-divider::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -1px;
-    width: 140px;
-    height: 2px;
-    background: linear-gradient(90deg, rgb(48, 90, 148), rgba(240, 179, 71, 0.75));
-  }
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.38);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(110, 26, 55, 0.25);
-  border-radius: 999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(110, 26, 55, 0.42);
-}
-
-.reading-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 2px;
-  background: linear-gradient(90deg, rgb(174, 36, 72), rgb(114, 186, 169));
-  z-index: 100;
-  transition: width 0.1s ease-out;
-}
-
-.article-content h2 {
-  font-size: 1.85rem;
-  font-weight: 700;
-  line-height: 1.25;
-  margin: 2.2rem 0 1rem;
-  color: rgb(110, 26, 55);
-}
-
-.article-content h3 {
-  font-size: 1.45rem;
-  font-weight: 700;
-  line-height: 1.35;
-  margin: 1.5rem 0 0.75rem;
-}
-
-.article-content p {
-  margin: 1rem 0 1.25rem;
-}
-
-.article-content a {
-  color: rgb(48, 90, 148);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
 }

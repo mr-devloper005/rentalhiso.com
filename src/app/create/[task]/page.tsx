@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Plus, Save } from "lucide-react";
-import { NavbarShell } from "@/components/shared/navbar-shell";
+import { ListingSiteShell } from "@/components/listing-site/listing-site-shell";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -182,8 +182,7 @@ export default function CreateTaskPage() {
 
   if (!taskConfig || !formConfig) {
     return (
-      <div className="min-h-screen bg-background">
-        <NavbarShell />
+      <ListingSiteShell>
         <main className="mx-auto max-w-3xl px-4 py-16 text-center">
           <h1 className="text-2xl font-semibold text-foreground">Task not available</h1>
           <p className="mt-2 text-muted-foreground">
@@ -193,7 +192,7 @@ export default function CreateTaskPage() {
             <Link href="/">Back home</Link>
           </Button>
         </main>
-      </div>
+      </ListingSiteShell>
     );
   }
 
@@ -270,10 +269,8 @@ export default function CreateTaskPage() {
     router.push(`/local/${taskKey}/${post.slug}`);
   };
 
-  return (
-    <div className="min-h-screen bg-background">
-      <NavbarShell />
-      <main className="mx-auto max-w-4xl px-4 py-12">
+  const formBody = (
+    <main className="mx-auto max-w-4xl flex-1 px-4 py-12">
         <div className="mb-8 flex items-center gap-3">
           <Button variant="ghost" size="icon" asChild>
             <Link href="/">
@@ -281,12 +278,14 @@ export default function CreateTaskPage() {
             </Link>
           </Button>
           <div>
-            <h1 className="text-2xl font-semibold text-foreground">{formConfig.title}</h1>
+            <h1 className="text-2xl font-semibold text-foreground" style={{ fontFamily: "var(--font-fraunces), Georgia, serif" }}>
+              {formConfig.title}
+            </h1>
             <p className="text-sm text-muted-foreground">{formConfig.description}</p>
           </div>
         </div>
 
-        <div className="rounded-3xl border border-border bg-card p-8 shadow-sm">
+        <div className="atlas-panel rounded-lg p-8">
           <div className="flex flex-wrap gap-2">
             <Badge variant="secondary">{taskConfig.label}</Badge>
             <Badge variant="outline">Local-only</Badge>
@@ -389,6 +388,7 @@ export default function CreateTaskPage() {
           </div>
         </div>
       </main>
-    </div>
   );
+
+  return <ListingSiteShell>{formBody}</ListingSiteShell>;
 }
