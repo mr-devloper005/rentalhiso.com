@@ -18,10 +18,19 @@ export function ListingHeader() {
       <div className="relative mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="min-w-0 shrink truncate text-lg font-semibold tracking-tight text-atlas-ink"
+          className="flex min-w-0 shrink items-center gap-2.5"
           style={{ fontFamily: 'var(--font-fraunces), Georgia, serif' }}
         >
-          {SITE_CONFIG.name}
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-md border border-stone-200 bg-white p-0.5 shadow-sm">
+            <img
+              src="/favicon.png?v=20260414"
+              alt=""
+              width={36}
+              height={36}
+              className="h-full w-full object-contain"
+            />
+          </span>
+          <span className="truncate text-lg font-semibold tracking-tight text-atlas-ink">{SITE_CONFIG.name}</span>
         </Link>
 
         <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">

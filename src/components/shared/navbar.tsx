@@ -35,6 +35,13 @@ export function Navbar() {
       <div className="bg-[var(--market-topbar)] text-[13px] text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2.5 sm:px-6 lg:px-8">
           <Link href="/" className="flex min-w-0 items-center gap-2 font-semibold tracking-tight">
+            <img
+              src="/favicon.png?v=20260414"
+              alt=""
+              width={24}
+              height={24}
+              className="h-6 w-6 shrink-0 object-contain"
+            />
             <span className="truncate">{SITE_CONFIG.name}</span>
             <span className="hidden text-white/50 sm:inline">Market</span>
           </Link>
@@ -62,19 +69,19 @@ export function Navbar() {
       <div className="border-b border-white/10 bg-[var(--market-header)] text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-0 sm:px-6 lg:px-8">
           <div className="flex min-w-0 flex-1 items-center gap-3 py-3">
-            <Link href="/" className="flex shrink-0 items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-md border border-white/15 bg-white p-1">
+            <Link href="/" className="flex min-w-0 shrink-0 items-center gap-3">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-md border border-white/15 bg-white p-1">
                 <img
-                  src="/favicon.png?v=20260404"
+                  src="/favicon.png?v=20260414"
                   alt={`${SITE_CONFIG.name} logo`}
-                  width="40"
-                  height="40"
+                  width={40}
+                  height={40}
                   className="h-full w-full object-contain"
                 />
               </div>
-              <div className="min-w-0 hidden sm:block">
-                <span className="block truncate text-lg font-bold tracking-tight">{SITE_CONFIG.name}</span>
-                <span className="block truncate text-[11px] font-medium uppercase tracking-wider text-white/55">
+              <div className="min-w-0">
+                <span className="block truncate text-base font-bold tracking-tight sm:text-lg">{SITE_CONFIG.name}</span>
+                <span className="mt-0.5 hidden truncate text-[11px] font-medium uppercase tracking-wider text-white/55 sm:block">
                   {siteContent.navbar.tagline}
                 </span>
               </div>
