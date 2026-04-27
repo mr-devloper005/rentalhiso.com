@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useMemo } from "react";
 import { TaskPostCard } from "@/components/shared/task-post-card";
@@ -61,7 +61,7 @@ export function TaskListClient({ task, initialPosts, category }: Props) {
   }
 
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] [&>*:nth-child(3n+1)]:lg:col-span-2">
       {merged.map((post) => {
         const localOnly = (post as any).localOnly;
         const href = localOnly
@@ -72,3 +72,4 @@ export function TaskListClient({ task, initialPosts, category }: Props) {
     </div>
   );
 }
+
