@@ -1,4 +1,4 @@
-import { ContentImage } from '@/components/shared/content-image'
+﻿import { ContentImage } from '@/components/shared/content-image'
 import Link from 'next/link'
 import { ExternalLink, FileText, Mail, MapPin, Tag } from 'lucide-react'
 import type { SitePost } from '@/lib/site-connector'
@@ -25,7 +25,7 @@ const getExcerpt = (value?: string | null, maxLength = 140) => {
   const text = stripHtml(value)
   if (!text) return ''
   if (text.length <= maxLength) return text
-  return `${text.slice(0, maxLength).trimEnd()}…`
+  return `${text.slice(0, maxLength).trimEnd()}â€¦`
 }
 
 const getContent = (post: SitePost): ListingContent => {
@@ -133,7 +133,7 @@ export function TaskPostCard({
   return (
     <Link
       href={href}
-      className={`motion-surface group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-white shadow-[0_4px_20px_rgba(15,23,42,0.07)] hover:-translate-y-0.5 hover:shadow-[0_12px_36px_rgba(15,23,42,0.12)] ${
+      className={`motion-surface group flex h-full flex-col overflow-hidden rounded-none border border-stone-300 bg-[#fffdf8] shadow-[0_10px_28px_rgba(67,56,46,0.08)] hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(67,56,46,0.14)] ${
         isListingVariant ? 'hover:border-primary/30' : 'hover:border-border'
       }`}
     >
@@ -149,7 +149,7 @@ export function TaskPostCard({
           intrinsicHeight={720}
         />
         <div className={`absolute inset-0 ${isListingVariant ? 'bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-95' : 'bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-85'}`} />
-        <span className="absolute left-4 top-4 inline-flex items-center gap-1 rounded-full bg-black/55 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-md">
+        <span className="absolute left-4 top-4 inline-flex items-center gap-1 rounded-none bg-stone-950/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-md">
           <Tag className="h-3.5 w-3.5" />
           {category}
         </span>
@@ -163,7 +163,7 @@ export function TaskPostCard({
       <div className={`flex flex-1 flex-col p-5 ${compact ? 'py-4' : ''}`}>
         <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
           {content.location ? (
-            <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-1 text-primary">
+            <span className="inline-flex items-center gap-1 rounded-none border border-amber-300/50 bg-amber-50 px-2.5 py-1 text-stone-900">
               <MapPin className="h-3 w-3" />
               {content.location}
             </span>
@@ -188,3 +188,4 @@ export function TaskPostCard({
     </Link>
   )
 }
+

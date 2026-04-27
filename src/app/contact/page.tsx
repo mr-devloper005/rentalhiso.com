@@ -17,8 +17,16 @@ export default function ContactPage() {
 
   const contactOptions = useMemo(
     () => [
-      { title: 'Listings support', detail: `listings@${SITE_CONFIG.domain}`, tag: 'Rentals' },
-      { title: 'General', detail: `hello@${SITE_CONFIG.domain}`, tag: 'Hello' },
+      { 
+        title: 'Listings support', 
+        detail: process.env.NEXT_PUBLIC_CONTACT_LISTINGS_EMAIL || `listings@${SITE_CONFIG.domain}`, 
+        tag: 'Rentals' 
+      },
+      { 
+        title: 'General', 
+        detail: process.env.NEXT_PUBLIC_CONTACT_GENERAL_EMAIL || `hello@${SITE_CONFIG.domain}`, 
+        tag: 'Hello' 
+      },
     ],
     []
   )
