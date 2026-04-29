@@ -27,9 +27,18 @@ export function ListingFooter() {
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr]">
           <div>
-            <p className="text-xl font-semibold text-stone-100" style={{ fontFamily: 'var(--font-fraunces), Georgia, serif' }}>
-              {SITE_CONFIG.name}
-            </p>
+            <div className="flex items-center gap-3" style={{ fontFamily: 'var(--font-fraunces), Georgia, serif' }}>
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-md border border-stone-700 bg-white p-0.5">
+                <img
+                  src="/favicon.png?v=20260414"
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="h-full w-full object-contain"
+                />
+              </span>
+              <p className="min-w-0 text-xl font-semibold text-stone-100">{SITE_CONFIG.name}</p>
+            </div>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-stone-400">{SITE_CONFIG.description}</p>
           </div>
           {cols.map((col) => (
