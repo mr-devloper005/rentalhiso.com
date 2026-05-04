@@ -1,5 +1,5 @@
 export const siteIdentity = {
-  code: process.env.NEXT_PUBLIC_SITE_CODE || 'rentalhiso',
+  code: process.env.NEXT_PUBLIC_SITE_CODE || 'm6xq3v8k',
   name: process.env.NEXT_PUBLIC_SITE_NAME || 'Rentalhiso',
   tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Refined rental and property discovery',
   description:
