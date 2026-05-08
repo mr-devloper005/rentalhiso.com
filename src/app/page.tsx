@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, Building2, Compass, MapPin } from 'lucide-react'
-import { HomeOpening } from '@/components/listing-site/home-opening'
+import { HeroSection } from '@/components/home/hero-section'
 import { ListingSiteShell } from '@/components/listing-site/listing-site-shell'
 import { TaskFeedSection } from '@/components/home/task-feed-section'
 import { SchemaJsonLd } from '@/components/seo/schema-jsonld'
 import { SITE_CONFIG } from '@/lib/site-config'
 import { buildPageMetadata } from '@/lib/seo'
-import { fetchTaskPosts } from '@/lib/task-data'
+import { fetchTaskPosts, getPostImages } from '@/lib/task-data'
 import { siteContent } from '@/config/site.content'
 import { isTaskVisibleInUi } from '@/config/site.ui'
 
@@ -59,10 +59,37 @@ export default async function HomePage() {
     return 0
   })
 
+  const listingPosts = listingFeed?.posts || []
+  const heroImages = listingPosts
+    .slice(0, 3)
+    .flatMap((post) => getPostImages(post))
+    .filter(Boolean)
+
+  const heroMetrics = [
+    { label: 'Listings', value: String(listingCount) || '0' },
+    { label: 'Areas', value: listingLocations.join(' · ') || 'Nationwide' },
+    { label: 'Focus', value: 'Homes & spaces' },
+  ]
+
+  const firstListing = listingPosts[0]
+  const firstContent = firstListing?.content && typeof firstListing.content === 'object'
+    ? (firstListing.content as Record<string, unknown>)
+    : {}
+
   return (
     <ListingSiteShell>
       <main className="flex-1">
-        <HomeOpening listingCount={listingCount} locations={listingLocations} />
+        <HeroSection
+          images={heroImages}
+          metrics={heroMetrics}
+          featureCardBadge={
+            typeof firstContent.category === 'string' ? firstContent.category : 'Featured listing'
+          }
+          featureCardTitle={firstListing?.title || siteContent.hero.featureCardTitle}
+          featureCardDescription={
+            firstListing?.summary || siteContent.hero.featureCardDescription
+          }
+        />
         <SchemaJsonLd
           data={[
             {

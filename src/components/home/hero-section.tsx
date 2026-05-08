@@ -9,7 +9,19 @@ import { siteContent } from '@/config/site.content'
 
 const FALLBACK_IMAGE = '/placeholder.svg?height=1400&width=2400'
 
-export function HeroSection({ images }: { images: string[] }) {
+export function HeroSection({
+  images,
+  metrics,
+  featureCardBadge,
+  featureCardTitle,
+  featureCardDescription,
+}: {
+  images: string[]
+  metrics?: { label: string; value: string }[]
+  featureCardBadge?: string
+  featureCardTitle?: string
+  featureCardDescription?: string
+}) {
   const slides = useMemo(() => {
     const valid = images.filter(Boolean)
     return valid.length ? valid.slice(0, 3) : [FALLBACK_IMAGE]
@@ -120,19 +132,19 @@ export function HeroSection({ images }: { images: string[] }) {
                 </div>
                 <div className="absolute inset-x-0 bottom-0 p-5 text-left">
                   <div className="inline-flex rounded border border-white/25 bg-black/35 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
-                    {siteContent.hero.featureCardBadge}
+                    {featureCardBadge || siteContent.hero.featureCardBadge}
                   </div>
                   <p className="mt-3 max-w-sm text-xl font-bold leading-snug text-white sm:text-2xl">
-                    {siteContent.hero.featureCardTitle}
+                    {featureCardTitle || siteContent.hero.featureCardTitle}
                   </p>
                   <p className="mt-2 max-w-md text-sm leading-relaxed text-white/85">
-                    {siteContent.hero.featureCardDescription}
+                    {featureCardDescription || siteContent.hero.featureCardDescription}
                   </p>
                 </div>
               </div>
 
               <div className="mt-3 grid gap-2 sm:grid-cols-3">
-                {siteContent.hero.metrics.map((metric) => (
+                {(metrics || siteContent.hero.metrics).map((metric) => (
                   <div
                     key={metric.label}
                     className="rounded-md border border-border bg-secondary/50 px-3 py-2.5 text-left shadow-sm"
