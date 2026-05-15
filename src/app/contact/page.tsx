@@ -18,8 +18,6 @@ export default function ContactPage() {
 
   const contactOptions = useMemo(
     () => [
-      { title: 'Listings support', detail: `listings@${SITE_CONFIG.domain}`, tag: 'Rentals' },
-      { title: 'General', detail: `hello@${SITE_CONFIG.domain}`, tag: 'Hello' },
     ],
     []
   )
@@ -30,25 +28,12 @@ export default function ContactPage() {
         title="Contact"
         description={`Reach ${SITE_CONFIG.name} for listing questions, partnerships, or product feedback.`}
       >
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="mx-auto max-w-2xl">
           <Card className="atlas-panel border-border">
             <CardContent className="p-8">
               <ContactLeadForm />
             </CardContent>
           </Card>
-          <div className="space-y-4">
-            {contactOptions.map((option) => (
-              <Card key={option.title} className="atlas-panel border-border">
-                <CardContent className="p-6">
-                  <Badge variant="secondary" className="rounded-md">
-                    {option.tag}
-                  </Badge>
-                  <h3 className="mt-3 font-semibold text-foreground">{option.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{option.detail}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
         </div>
       </ListingInnerPage>
     </ListingSiteShell>
